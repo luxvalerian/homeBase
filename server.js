@@ -22,10 +22,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Mount Routes app.use()
+app.use('/', indexRouter);
 app.use('/cafes', cafesRouter);
 
 // Tell App to listen
-app.use('/', indexRouter);
 app.listen(port, () => {
     console.log(`Express is listening on port:${port}`);
 });

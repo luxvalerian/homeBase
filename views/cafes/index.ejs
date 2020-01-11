@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>homeBase: a café tracker</title>
+</head>
+<body>
+    <h1>List of Cafés</h1>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Hours</th>
+            <th>Open Sundays</th>
+        </thead>
+        <tbody>
+            <% cafes.forEach(cafe => { %>
+                <tr>
+                    <td><%= cafe.name %></td>
+                    <td><%= cafe.address %></td>
+                    <td><%= cafe.hours %></td>
+                    <td><%= cafe.openSundays ? 'Yes' : 'No' %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

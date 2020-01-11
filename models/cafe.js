@@ -3,11 +3,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const cafeSchema = new Schema({
-    name: String,
+    name:  {
+        type: String,
+        required: true
+    },
     addressTown: String,
     hours: String,
-    averageRating: String,
-    openSundays: Boolean
+    openSundays: {
+        type: Boolean, 
+        default: false}
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Cafe', cafeSchema);
