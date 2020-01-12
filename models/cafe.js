@@ -11,7 +11,8 @@ const cafeSchema = new Schema({
     hours: String,
     openSundays: {
         type: Boolean, 
-        default: false}
+        default: false
+    },
 }, {
     timestamps: true
 });
