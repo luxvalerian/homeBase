@@ -17,4 +17,6 @@ const cafeSchema = new Schema({
     timestamps: true
 });
 
+// step 7.3 modifies the student model. should i put the users model here?
+
 module.exports = mongoose.model('Cafe', cafeSchema);

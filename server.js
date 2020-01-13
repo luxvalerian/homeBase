@@ -2,6 +2,7 @@
 const express = require('express');
 const logger = require('morgan');
 const session = require('express-session');
+const passport = require('passport');
 const port = 3000; // We'll eventually set the port dynamically
 const indexRouter = require('./routes/index');
 const cafesRouter = require('./routes/cafes');
@@ -12,6 +13,7 @@ const app = express();
 require('dotenv').config()
 // Connect to DB w mongoose
 require('./config/database');
+require('./config/passport');
 
 
 // Configure Express App app.set()
@@ -26,7 +28,9 @@ app.use(session({
     secret: 'ThisIshomeBase!',
     resave: false,
     saveUninitialized: true
-}))
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // Mount Routes app.use()
