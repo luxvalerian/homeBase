@@ -6,6 +6,7 @@ const passport = require('passport');
 const port = 3000; // We'll eventually set the port dynamically
 const indexRouter = require('./routes/index');
 const cafesRouter = require('./routes/cafes');
+const reviewsRouter = require('./routes/reviews');
 
 // Set up express app
 const app = express();
@@ -36,6 +37,7 @@ app.use(passport.session());
 // Mount Routes app.use()
 app.use('/', indexRouter);
 app.use('/cafes', cafesRouter);
+app.use('/', reviewsRouter);
 
 // Tell App to listen
 app.listen(port, () => {

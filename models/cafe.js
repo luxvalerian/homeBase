@@ -1,18 +1,24 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
+
+const reviewsSchema = new Schema ({
+    content: String,
+}, {
+    timestamps: true
+});
 
 const cafeSchema = new Schema({
     name:  {
         type: String,
         required: true
     },
-    addressTown: String,
+    address: String,
     hours: String,
     openSundays: {
         type: Boolean, 
         default: false
     },
+    reviews: [reviewsSchema]
 }, {
     timestamps: true
 });

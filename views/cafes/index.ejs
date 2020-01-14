@@ -35,6 +35,7 @@
                     <td><%= cafe.address %></td>
                     <td><%= cafe.hours %></td>
                     <td><%= cafe.openSundays ? 'Yes' : 'No' %></td>
+                    <td><a href="/cafees/<%= cafe._id %>">Details</a></td>
                 </tr>
             <% }); %>
         </tbody>

@@ -1,13 +1,27 @@
 const Cafe = require('../models/cafe');
 
 module.exports = {
+    index,
+    show,
     new: newCafe,
     create,
-    index
+}
+
+function index(req, res){
+    Cafe.find({}, function(err, cafes) {
+        res.render('cafes/index', {
+            title: 'All Cafés', cafes });
+    });
+}
+
+function show(req, res) {
+    Cafe.findById(req.params.id, function(err, cafe) {
+        res.render('cafes/show', { title: 'Café Detail', cafe })
+    })
 }
 
 function newCafe(req, res){
-    res.render('cafes/new');
+    res.render('cafes/new', { title: 'Add Café' });
 }
 
 function create(req, res){
@@ -25,13 +39,5 @@ function create(req, res){
         if (err) return res.redirect('cafes/new');
         console.log(cafe);
         res.redirect(`/cafes/${ cafe._id }`);
-    });
-}
-
-function index(req, res){
-    Cafe.find({}, function(err, cafes){
-        res.render('cafes/index', {
-            cafes
-        });
     });
 }
