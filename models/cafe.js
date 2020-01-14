@@ -18,7 +18,11 @@ const cafeSchema = new Schema({
         type: Boolean, 
         default: false
     },
-    reviews: [reviewsSchema]
+    reviews: [reviewsSchema],
+    addedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'Visitor'
+    }
 }, {
     timestamps: true
 });

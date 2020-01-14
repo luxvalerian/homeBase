@@ -15,7 +15,7 @@ function index(req, res){
 }
 
 function show(req, res) {
-    Cafe.findById(req.params.id, function(err, cafe) {
+    Cafe.findById(req.params.id).populate('addedBy').exec(function(err, cafe) { //user info
         res.render('cafes/show', { title: 'Café Detail', cafe })
     })
 }
@@ -34,6 +34,7 @@ function create(req, res){
         if (req.body[key] === '') delete req.body[key];
     }
     const cafe = new Cafe(req.body);
+    cafe.addedBy = req.user._id;
 
     cafe.save(function(err) {
         if (err) return res.redirect('cafes/new');
