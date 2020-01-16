@@ -8,8 +8,13 @@
 </head>
 <body>
      <!-- <img src="/images/camera.svg"> -->
+     <% if (user) { %> 
+        <p>Welcome <%= user.name %></p>
      <a href="/cafes/new" <%- title === 'Add Cafe' ? 'class="active"' : '' %>>Add a Café</a>
+     <% } else { %>
+        <p>Not logged in.</p>
+     <% } %>
      <a href="/cafes" <%- title === 'All Cafes' ? 'class="active"' : '' %>>All Cafés</a>
-   </nav>
+    </nav>
    <main>
     <h1><%= title %></h1>

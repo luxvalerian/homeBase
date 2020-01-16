@@ -15,8 +15,9 @@ function index(req, res){
 }
 
 function show(req, res) {
+    console.log(req.user);
     Cafe.findById(req.params.id).populate('addedBy').exec(function(err, cafe) { //user info
-        res.render('cafes/show', { title: 'Café Detail', cafe })
+        res.render('cafes/show', { title: 'Café Detail', cafe, user: req.user })
     })
 }
 
@@ -26,13 +27,11 @@ function newCafe(req, res){
 
 function create(req, res){
     req.body.openSundays = !!req.body.openSundays;
-//     // remove whitespace next to commas
-//     req.body.cast = req.body.cast.replace(/\s*,\s*/g, ',');
-//   // split if it's not an empty string
-//     if (req.body.cast) req.body.cast = req.body.cast.split(',');
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key];
     }
+    console.log(req.body);
+    console.log(req.user);
     const cafe = new Cafe(req.body);
     cafe.addedBy = req.user._id;
 
