@@ -5,6 +5,25 @@ module.exports = {
     show,
     new: newCafe,
     create,
+    delete: deleteCafe,
+    edit,
+    update
+}
+
+
+function edit(req, res) {
+    Cafe.findById(req.params.id, function(err, cafe) {
+        res.render('cafes/edit', {
+            cafe
+        });
+    })
+}
+
+function update(req, res) {
+    req.body.openSundays = req.body.openSundays === 'on';
+    Cafe.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, updatedCafe) {
+        res.redirect('/cafes');
+    })
 }
 
 function index(req, res){
@@ -39,5 +58,11 @@ function create(req, res){
         if (err) return res.redirect('cafes/new');
         console.log(cafe);
         res.redirect(`/cafes/${ cafe._id }`);
+    });
+}
+
+function deleteCafe(req, res) {
+    Cafe.findByIdAndDelete(req.params.id, function() {
+        res.redirect('/cafes');
     });
 }

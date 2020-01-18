@@ -1,7 +1,8 @@
 const Cafe = require('../models/cafe');
 
 module.exports = {
-    create
+    create,
+    deleteOne
 };
 
 function create(req, res) {
@@ -11,4 +12,8 @@ function create(req, res) {
             res.redirect(`/cafes/${cafe._id}`);
         });
     });
+}
+
+function deleteOne(id) {
+    Cafe.splice(id, 1);
 }

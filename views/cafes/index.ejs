@@ -27,6 +27,7 @@
             <th>Address</th>
             <th>Hours</th>
             <th>Open Sundays</th>
+            <th>Actions</th>
         </thead>
         <tbody>
             <% cafes.forEach(cafe => { %>
@@ -35,11 +36,16 @@
                     <td><%= cafe.address %></td>
                     <td><%= cafe.hours %></td>
                     <td><%= cafe.openSundays ? 'Yes' : 'No' %></td>
-                    <td><a href="/cafes/<%= cafe._id %>">Details</a></td>
+                    <td>
+                        <a href="/cafes/<%= cafe._id %>">Details</a>
+                        <form action="/cafes/<%= cafe._id %>?_method=DELETE" class="delete-form" method="POST">
+                             <button style="border: none; color: #039be5" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             <% }); %>
         </tbody>
     </table>
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>
 </body>
 </html>

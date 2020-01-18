@@ -9,7 +9,7 @@
 <body>
      <!-- <img src="/images/camera.svg"> -->
      <% if (user) { %> 
-        <p>Welcome <%= user.name %></p>
+        <p align="center">Welcome <%= user.name %></p>
      <a href="/cafes/new" <%- title === 'Add Cafe' ? 'class="active"' : '' %>>Add a Café</a>
      <% } else { %>
         <p>Not logged in.</p>

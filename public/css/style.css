@@ -1,0 +1,26 @@
+h1 {
+    background-color: #efefef;
+    padding: 10px;
+}
+
+body {
+    width: 750px;
+    color: #665544
+}
+
+p {
+    width: 450px;
+}
+
+.delete-form{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.delete-form{
+    color: red;
+}
+
+li {
+    list-style: none;
+}
